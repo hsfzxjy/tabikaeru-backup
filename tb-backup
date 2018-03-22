@@ -1,0 +1,25 @@
+# Change the following line to the directory that stores the photos
+$PICDIR=/storage/emulated/0/Android/data/jp.co.hit_point.tabikaeru/Picture/
+
+if [ ! -d $PICDIR ]; then
+    echo Directory $PICDIR not found. Try to fix it by editting this script.
+    exit 1
+fi
+
+cd $HOME
+tar cvzf tb-backup.tgz $PICDIR/*.sav
+
+for ip in `ip neigh | awk '{print $1}'`; do
+    echo "Try connecting to $ip ..."
+    if echo 'QUIT' | nc -w 1 $ip 2121 < /dev/null; then
+        echo "Connected to $ip"
+        echo "Uploading..."
+        ftpput -u admin -p 12345 -P 2121 $ip tabibk.tgz
+        echo "Uploaded."
+        echo "Now you can press <Ctrl+C> on your computer to shut down the server."
+        exit 0
+    fi
+fi
+
+echo "Error: no server found."
+exit 1
