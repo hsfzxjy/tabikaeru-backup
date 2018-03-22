@@ -15,7 +15,7 @@
 You need:
 
  + a terminal emulator (the script has been tested on [Termux](https://termux.com/), which is highly recommended)
- + to find out the location where the photos are stored. This variable is pre-configured as `/storage/emulated/0/Android/data/jp.co.hit_point.tabikaeru/Picture/`, but may varied across systems. If you have a different location, configure it by editting `tb-backup` file.
+ + to find out the location where the photos are stored. This variable is pre-configured as `/storage/emulated/0/Android/data/jp.co.hit_point.tabikaeru/Picture/`, but may vary across systems. If you have a different location, configure it by editting `tb-backup` file.
 
 ### Desktop
 
